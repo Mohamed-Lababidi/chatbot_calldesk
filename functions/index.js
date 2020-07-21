@@ -7,12 +7,12 @@ const host = 'api.worldweatheronline.com';
 const wwoApiKey = 'd2df1ffab34e4c788f3143210202007';
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => {
+  console.log('test method' , req.method)
+  console.log('test body:' + JSON.stringify(req.body))
   // Get the city and date from the request
   let city = req.body.queryResult.parameters['geo-city']; // city is a required param
 
   // Get the date for the weather forecast (if present)
-  console.log('test method' , req.method)
-  console.log('test body:' + JSON.stringify(req.body))
   let date = '';
   if (req.body.queryResult.parameters['date']) {
     date = req.body.queryResult.parameters['date'];
