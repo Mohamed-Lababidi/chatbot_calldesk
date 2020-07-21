@@ -1,0 +1,11 @@
+POST http://localhost:5001/chatbot-calldesk-lcxyog/us-central1/dialogflowFirebaseFulfillment
+Content-Type: application/json
+
+{
+    "queryResult":{
+        "parameters": {
+            "geo-city": "Tunis",
+            "date": "2020-07-22"
+        }
+    }
+}

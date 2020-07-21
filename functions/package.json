@@ -8,8 +8,8 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "test":"nyc mocha",
-    "flow":"flow"
+    "test": "nyc mocha",
+    "flow": "flow"
   },
   "engines": {
     "node": "10"

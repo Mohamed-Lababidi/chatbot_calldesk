@@ -1,5 +1,4 @@
 //flow
-'use strict';
 
 const http = require('http');
 const functions = require('firebase-functions');
@@ -12,6 +11,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => 
   let city = req.body.queryResult.parameters['geo-city']; // city is a required param
 
   // Get the date for the weather forecast (if present)
+  console.log('test method' , req.method)
+  console.log('test body:' + JSON.stringify(req.body))
   let date = '';
   if (req.body.queryResult.parameters['date']) {
     date = req.body.queryResult.parameters['date'];
@@ -20,7 +21,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => 
 
   // Call the weather API
   callWeatherApi(city, date).then ((output) => {
-    res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
+    return res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
   });
@@ -58,7 +59,7 @@ function callWeatherApi (city, date) {
       });
       res.on('error', (error) => {
         console.log(`Error calling the weather API: ${error}`)
-        reject();
+        reject(error);
       });
     });
   });
