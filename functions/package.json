@@ -1,8 +1,9 @@
 {
+  "main": "src/index.js",
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --fix src",
     "serve": "firebase emulators:start --only functions",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
@@ -27,7 +28,11 @@
     "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.0.0",
     "babel-preset-airbnb": "^5.0.0",
+    "chai": "^4.2.0",
     "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-promise": "^4.0.1",
     "firebase-functions-test": "^0.2.0",
     "flow-bin": "^0.129.0",
