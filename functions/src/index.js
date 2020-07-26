@@ -2,7 +2,6 @@
 const http = require('http');
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-// const util = require('util');
 
 admin.initializeApp();
 
@@ -40,7 +39,7 @@ function callWeatherApi(city, date) {
 }
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => {
-  console.log(JSON.stringify(req.body));
+  // console.log(JSON.stringify(req.body));
   const city = req.body.queryResult.parameters['geo-city'];
   let date = '';
   if (req.body.queryResult.parameters.date) {
@@ -52,16 +51,4 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => 
     .catch(() => {
       res.json({ fulfillmentText: 'I don\'t know the weather but I hope it\'s good!' });
     });
-});
-
-exports.fonctionBidon = functions.https.onRequest((req, res) => {
-  console.log('body de la requete', req.body);
-  console.log('reponse', res, res.json);
-  if (req.body.city === 'Paris') {
-    res.json({ weather: 'Il fait beau a Paris' });
-  } else if (req.body.city === 'Toulouse') {
-    res.json({ weather: 'Il fait trop chaud a Toulouse' });
-  } else {
-    res.json({ weather: 'Je ne sais pas ce que tu veux !' });
-  }
 });
