@@ -1,0 +1,12 @@
+### Test dialogflowFirebaseFulfillment
+POST http://localhost:5001/chatbot-calldesk-lcxyog/us-central1/dialogflowFirebaseFulfillment
+Content-Type: application/json
+
+{
+    "queryResult":{
+        "": {
+            "geo-city": "Marseille",
+            "name": "2020-07-24"
+        }
+    }
+}
