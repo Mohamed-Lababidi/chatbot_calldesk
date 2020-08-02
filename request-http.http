@@ -10,27 +10,3 @@ Content-Type: application/json
         }
     }
 }
-
-### Test fonctionBidon
-POST http://localhost:5001/chatbot-calldesk-lcxyog/us-central1/fonctionBidon
-Content-Type: application/json
-
-{
-    "city": "Paris"
-}
-
-### Test fonctionBidon
-POST http://localhost:5001/chatbot-calldesk-lcxyog/us-central1/fonctionBidon
-Content-Type: application/json
-
-{
-    "city": "Toulouse"
-}
-
-### Test fonctionBidon
-POST http://localhost:5001/chatbot-calldesk-lcxyog/us-central1/fonctionBidon
-Content-Type: application/json
-
-{
-    "city": "Brest"
-}
