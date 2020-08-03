@@ -7,7 +7,7 @@ describe('test firebaseFunction', () => {
       body: {
         queryResult: {
           parameters: {
-            'movie': 'fight club',
+            movie: 'fight club',
           },
         },
       },
@@ -28,7 +28,7 @@ describe('test firebaseFunction', () => {
       body: {
         queryResult: {
           parameters: {
-            'movie': 'Peroutunis',
+            movie: 'Peroutunis',
           },
         },
       },

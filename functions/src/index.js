@@ -31,15 +31,8 @@ const callMovieApi = (targetedMovieName) => new Promise((resolve, reject) => {
 });
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => {
-  // console.log(JSON.stringify(req.body));
   const movieQuery = req.body.queryResult.parameters.movie;
   const movieName = Array.isArray(movieQuery) ? movieQuery[0] : movieQuery;
-  // let date = '';
-
-  // if (req.body.queryResult.parameters.date) {
-  //   date = req.body.queryResult.parameters.date;
-  // }
-  // const movieName = 'fight club';
 
   callMovieApi(movieName)
     .then((output) => res.json({ fulfillmentText: output }))
