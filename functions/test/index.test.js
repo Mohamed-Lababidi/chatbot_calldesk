@@ -2,12 +2,12 @@ const { expect } = require('chai');
 const { dialogflowFirebaseFulfillment } = require('../src/index.js');
 
 describe('test firebaseFunction', () => {
-  it('citytest', () => {
+  it('movieTest', () => {
     const req = {
       body: {
         queryResult: {
           parameters: {
-            'geo-city': 'Paris',
+            'movie': 'fight club',
           },
         },
       },
@@ -16,19 +16,19 @@ describe('test firebaseFunction', () => {
       json: (responseBody) => {
         expect(responseBody).to.be.a('object');
         expect(responseBody.fulfillmentText).to.be.a('string');
-        const expectedTextCity = 'Current conditions in the City Paris';
-        const includeText = responseBody.fulfillmentText.startsWith(expectedTextCity);
+        const expectedTextMovie = 'description: ';
+        const includeText = responseBody.fulfillmentText.startsWith(expectedTextMovie);
         expect(includeText).to.equal(true);
       },
     };
     dialogflowFirebaseFulfillment(req, res);
   });
-  it('citytest', () => {
+  it('movie test', () => {
     const req = {
       body: {
         queryResult: {
           parameters: {
-            'geo-city': 'Poudlard',
+            'movie': 'Peroutunis',
           },
         },
       },
@@ -38,8 +38,8 @@ describe('test firebaseFunction', () => {
         // console.log(responseBody);
         expect(responseBody).to.be.a('object');
         expect(responseBody.fulfillmentText).to.be.a('string');
-        const expectedTextCity = 'I don/t know the weather but I hope it/s good! Poudlard';
-        expect(responseBody.fulfillmentText).to.equal(expectedTextCity);
+        const expectedTextMovie = 'Desole nous n\'avons pas trouvé le film demandé';
+        expect(responseBody.fulfillmentText).to.equal(expectedTextMovie);
       },
     };
     dialogflowFirebaseFulfillment(req, res);

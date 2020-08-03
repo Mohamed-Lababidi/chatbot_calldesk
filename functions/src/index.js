@@ -1,16 +1,47 @@
 // @flow
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 const axios = require('axios');
 
-const config = {
-  method: 'get',
-  url: 'https://api.themoviedb.org/3/movie/550?api_key=15c997966d7f306fb907fb8332fd350e',
-  headers: { },
-};
+admin.initializeApp();
 
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-})
-.catch(function (error) {
-  console.log(error);
+const callMovieApi = (targetedMovieName) => new Promise((resolve, reject) => {
+  const config = {
+    method: 'get',
+    url: `https://api.themoviedb.org/3/search/movie?api_key=15c997966d7f306fb907fb8332fd350e&language=fr-fr&query=${targetedMovieName}&page=1&include_adult=false`,
+    headers: { },
+  };
+
+  const createOutput = (data) => `description: ${data.overview} \n sortie en: ${data.release_date}`;
+
+  const findMovieAndCreateOutput = (response) => {
+    const allMovies = response.data.results || [];
+    const targetMovie = allMovies
+      .find((movie) => movie.title.toUpperCase() === targetedMovieName.toUpperCase()
+        || movie.title.toUpperCase().startsWith(targetedMovieName.toUpperCase()));
+    if (!targetMovie) {
+      return ('Desole nous n\'avons pas trouvé le film demandé');
+    }
+    return createOutput(targetMovie);
+  };
+
+  axios(config)
+    .then((response) => resolve(findMovieAndCreateOutput(response)))
+    .catch((error) => reject(error));
+});
+
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => {
+  // console.log(JSON.stringify(req.body));
+  const movieQuery = req.body.queryResult.parameters.movie;
+  const movieName = Array.isArray(movieQuery) ? movieQuery[0] : movieQuery;
+  // let date = '';
+
+  // if (req.body.queryResult.parameters.date) {
+  //   date = req.body.queryResult.parameters.date;
+  // }
+  // const movieName = 'fight club';
+
+  callMovieApi(movieName)
+    .then((output) => res.json({ fulfillmentText: output }))
+    .catch(() => res.json('erreur'));
 });
