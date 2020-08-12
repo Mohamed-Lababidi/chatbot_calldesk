@@ -6,7 +6,7 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 const host = 'api.worldweatheronline.com';
-const wwoApiKey = 'd2df1ffab34e4c788f3143210202007';
+const wwoApiKey = '';
 
 function callWeatherApi(city, date) {
   return new Promise((resolve, reject) => {
