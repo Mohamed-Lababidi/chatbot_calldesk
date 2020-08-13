@@ -8,7 +8,7 @@ admin.initializeApp();
 const callMovieApi = (targetedMovieName) => new Promise((resolve, reject) => {
   const config = {
     method: 'get',
-    url: `https://api.themoviedb.org/3/search/movie?api_key=15c997966d7f306fb907fb8332fd350e&language=fr-fr&query=${targetedMovieName}&page=1&include_adult=false`,
+    url: `https://api.themoviedb.org/3/search/movie?api_key=  &language=fr-fr&query=${targetedMovieName}&page=1&include_adult=false`,
     headers: { },
   };
 
