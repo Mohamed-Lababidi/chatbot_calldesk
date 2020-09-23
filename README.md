@@ -12,7 +12,7 @@ Quel est le résumé de Fight Club ?
 
 * Le lien du chatbot https://bot.dialogflow.com/Chatbot-Calldesk
 
-## Fichiers
+## Fichiers
 
 src/index.js: webhook ecrit avec flow
 build/index.js: Compilation de webhook et uploader sur Google Cloud Platform, qui appel chatbot-Calldesk
