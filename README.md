@@ -10,7 +10,7 @@ Quel est le resumé de Harry Potter ?
 
 Quel est le résumé de Fight Club ?
 
-* Le lien du chatbot https://bot.dialogflow.com/Chatbot-Calldesk
+* Le lien du chatbot https://bot.dialogflow.com/29bf9028-3794-4fc2-83b7-d3e3c6c7bb55
 
 ## Fichiers
 
